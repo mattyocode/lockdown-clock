@@ -44,8 +44,8 @@ Variables
   --clr-green-light: hsl(125, 71%, 66%);
   --clr-black: #222;
   --clr-gold: #c59d5f;
-  --ff-primary: "Helvetica", sans-serif;
-  --ff-secondary: "Open Sans", sans-serif;
+  --ff-primary: "Poppins", sans-serif;
+  --ff-secondary: "Poppins", sans-serif;
   --transition: all 0.3s linear;
   --spacing: 0.25rem;
   --radius: 0.5rem;
@@ -73,6 +73,7 @@ body {
   color: var(--clr-grey-1);
   line-height: 1.5;
   font-size: 0.875rem;
+  background: #ffffff;
 }
 ul {
   list-style-type:disc;
@@ -171,7 +172,7 @@ p {
 }
 
 .section-center {
-  width: 90vw;
+  width: 80vw;
   display: grid;
   margin: 2rem auto;
   max-width: 1170px;
@@ -181,8 +182,6 @@ p {
 
 main {
   min-height: 100vh;
-  /* display: grid;
-  place-items: center; */
 }
 
 header {
@@ -196,9 +195,9 @@ Countdown Timer
 */
 
 .title {
-  font-family: "Poppins", sans-serif;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 600;
-  color: rgba(24, 24, 24, 0.831);
+  color: var(--clr-primary-1);
 }
 
 .img {
@@ -214,7 +213,7 @@ Countdown Timer
 }
 
 .text-info {
-  left: 50%;
+  margin-left: 6%;
 }
 
 .info h3 {
@@ -257,7 +256,7 @@ Countdown Timer
 
 }
 .deadline-format {
-  background: rgba(8, 11, 40, 0.9);
+  background: var(--clr-primary-1);
   color: var(--clr-white);
   margin-right: 1rem;
   border-radius: 5%;
@@ -289,8 +288,11 @@ Countdown Timer
     font-size: 0.5rem;
   }
   .deadline h4:not(.expired) {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: 0;
+  }
+  .text-info {
+    margin-left: 3%;
   }
 }
 
@@ -322,7 +324,7 @@ Countdown Timer
 #step-three {
   background: linear-gradient(
     to left bottom,
-    rgba(255,255,255,0.3),
+    rgba(177, 177, 177, 0.5),
     rgba(0,0,0,0.3)),
     url("./outdoor-pub.jpg");
   background-size: cover;
