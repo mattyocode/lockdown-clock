@@ -125,7 +125,7 @@ p {
 }
 @media screen and (min-width: 800px) {
   h1 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
   h2 {
     font-size: 2.5rem;
@@ -195,9 +195,11 @@ Countdown Timer
 */
 
 .title {
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family:Roboto, 'Segoe UI';
+  font-style: italic;
   font-weight: 600;
   color: var(--clr-primary-1);
+  padding: 1rem 0;
 }
 
 .img {
@@ -294,6 +296,11 @@ Countdown Timer
   .text-info {
     margin-left: 3%;
   }
+}
+
+.giveaway {
+  border-bottom: 0.4rem solid darkslategray;
+  padding-bottom: 0.5rem;
 }
 
 .countdown-container {
