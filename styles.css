@@ -13,12 +13,12 @@ Variables
 
 :root {
   /* dark shades of primary color*/
-  --clr-primary-1: hsl(205, 86%, 17%);
-  --clr-primary-2: hsl(205, 77%, 27%);
-  --clr-primary-3: hsl(205, 72%, 37%);
-  --clr-primary-4: hsl(205, 63%, 48%);
+  --clr-primary-1: #2325EB;
+  --clr-primary-2: #3FA6F2;
+  --clr-primary-3: #44DBC5;
+  --clr-primary-4: #3FF26A;
   /* primary/main color */
-  --clr-primary-5: #49a6e9;
+  --clr-primary-5: #81EB28;
   /* lighter shades of primary color */
   --clr-primary-6: hsl(205, 89%, 70%);
   --clr-primary-7: hsl(205, 90%, 76%);
@@ -31,7 +31,7 @@ Variables
   --clr-grey-3: hsl(209, 34%, 30%);
   --clr-grey-4: hsl(209, 28%, 39%);
   /* grey used for paragraphs */
-  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-5: #707070;
   --clr-grey-6: hsl(209, 23%, 60%);
   --clr-grey-7: hsl(211, 27%, 70%);
   --clr-grey-8: hsl(210, 31%, 80%);
@@ -44,8 +44,8 @@ Variables
   --clr-green-light: hsl(125, 71%, 66%);
   --clr-black: #222;
   --clr-gold: #c59d5f;
-  --ff-primary: "Poppins", sans-serif;
-  --ff-secondary: "Poppins", sans-serif;
+  --ff-primary: 'PT Serif', Roboto, 'Segoe UI', serif;
+  --ff-secondary: 'Open sans', sans-serif;
   --transition: all 0.3s linear;
   --spacing: 0.25rem;
   --radius: 0.5rem;
@@ -100,7 +100,7 @@ h4 {
   text-transform: capitalize;
   line-height: 1.25;
   margin-bottom: 0.75rem;
-  font-family: var(--ff-primary);
+  font-family: var(--ff-secondary);
 }
 h1 {
   font-size: 2rem;
@@ -108,15 +108,15 @@ h1 {
   text-align: center;
 }
 h2 {
-  color: white;
+  color: var(--clr-black);
   font-size: 2rem;
 }
 h3 {
-  color: white;
+  color: var(--clr-black);
   font-size: 1.25rem;
 }
 h4 {
-  color: white;
+  color: var(--clr-white);
   font-size: 1rem;
 }
 p {
@@ -175,7 +175,7 @@ p {
   width: 80vw;
   display: grid;
   margin: 2rem auto;
-  max-width: 1170px;
+  max-width: 800px;
   grid-template-columns: 1fr;
   place-items: center;
 }
@@ -195,11 +195,12 @@ Countdown Timer
 */
 
 .title {
-  font-family:Roboto, 'Segoe UI';
-  font-style: italic;
-  font-weight: 600;
-  color: var(--clr-primary-1);
+  font-family:'PT Serif';
+  font-weight: 900;
+  font-size: 4rem;
+  color: var(--clr-black);
   padding: 1rem 0;
+  line-height: 5rem;
 }
 
 .img {
@@ -215,7 +216,8 @@ Countdown Timer
 }
 
 .text-info {
-  margin-left: 6%;
+  margin-left: 0;
+  padding-bottom: 3rem;
 }
 
 .info h3 {
@@ -223,7 +225,7 @@ Countdown Timer
   margin: 2rem 1rem;
 }
 .info ul {
-  color: white;
+  color: var(--clr-black);
   font-size: 1.5rem;
   margin: 0 1rem;
 }
@@ -248,25 +250,30 @@ Countdown Timer
 
 .deadline-wrapper {
   display: flex;
-  justify-content: center;
+  float: right;
+  padding: 1rem;
+  border-radius: 2%;
   margin-bottom: 1.5rem;
 }
 
 .deadline {
   display: flex;
-  margin: 0 auto;
-
+  margin-right: 0;
 }
 .deadline-format {
-  background: var(--clr-primary-1);
+  background: var(--clr-grey-5);
   color: var(--clr-white);
-  margin-right: 1rem;
+  margin: 0 0.5rem;
   border-radius: 5%;
   width: 5rem;
   height: 5rem;
   display: grid;
   place-items: center;
   text-align: center;
+}
+
+.deadline-format .secs {
+  margin-right: 0;
 }
 
 .deadline-format span {
@@ -295,6 +302,7 @@ Countdown Timer
   }
   .text-info {
     margin-left: 3%;
+    padding-bottom: 1rem;
   }
 }
 
@@ -310,7 +318,7 @@ Countdown Timer
   position: relative;
 }
 
-#step-one {
+#deadline-one {
   background: linear-gradient(
     to left bottom,
     rgba(255,255,255,0.3),
@@ -319,7 +327,8 @@ Countdown Timer
   background-size: cover;
 }
 
-#step-two {
+
+#deadline-two {
   background: linear-gradient(
     to left bottom,
     rgba(255,255,255,0.3),
@@ -328,7 +337,7 @@ Countdown Timer
   background-size: cover;
 }
 
-#step-three {
+#deadline-three {
   background: linear-gradient(
     to left bottom,
     rgba(177, 177, 177, 0.5),
@@ -337,7 +346,7 @@ Countdown Timer
   background-size: cover;
 }
 
-#step-four {
+#deadline-four {
   background: linear-gradient(
     to left bottom,
     rgba(255,255,255,0.3),
@@ -346,7 +355,7 @@ Countdown Timer
   background-size: cover;
 }
 
-#final-step {
+#final-deadline {
   background: linear-gradient(
     to left bottom,
     rgba(255,255,255,0.3),
