@@ -1,29 +1,57 @@
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-const weekdays = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+function typingEffect(){
+  const texts = ['Fewer Zoom Meetings', 'End of Lockdown', 'The Actual Pub', 'Seeing Your Pals', 'Seeing Your Fam', 'Proper Holidays'];
+  let count = 0;
+  let charIndex = 0;
+  let currentText = '';
+  let letter = '';
+
+  (function type(){
+
+    if(count === texts.length){
+      count = 0;
+    }
+    currentText = texts[count];
+    letter = currentText.slice(0, ++charIndex);
+
+    document.querySelector('.typing').textContent = letter;
+    if(letter.length === currentText.length){
+      count++;
+      charIndex = 0;
+    }
+
+    let interval = Math.floor(Math.random() * 200) + 100
+
+    setTimeout(type, interval);
+
+  }());
+
+}
+
 
 function setCountdown(countdownId, futureDate){
-  // get deadline, giveaway, h4s in deadline
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
   const countdownSection = document.getElementById(`${countdownId}`)
 
@@ -85,6 +113,8 @@ function setCountdown(countdownId, futureDate){
   let countdown = setInterval(getRemainingTime, 1000);
   getRemainingTime();
 };
+
+typingEffect();
 
 // set first clock
 let stepOneDate = new Date(2021,2,8,0,0,1);

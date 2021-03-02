@@ -201,7 +201,7 @@ Countdown Timer
   font-size: 4rem;
   color: var(--clr-black);
   padding: 1rem 0;
-  line-height: 5rem;
+  line-height: 1rem;
 }
 
 .img {
