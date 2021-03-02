@@ -146,6 +146,7 @@ p {
     line-height: 1;
   }
 }
+
 /*  global classes */
 
 .btn {
@@ -212,7 +213,7 @@ Countdown Timer
   padding: .5rem;
   z-index: 2;
   backdrop-filter: blur(0.5rem);
-  position: relative;
+  /* position: relative; */
 }
 
 .text-info {
@@ -222,7 +223,7 @@ Countdown Timer
 
 .info h3 {
   text-transform: capitalize;
-  margin: 2rem 1rem;
+  margin: 1rem 1rem;
 }
 .info ul {
   color: var(--clr-black);
@@ -233,6 +234,7 @@ Countdown Timer
   color: var(--clr-grey-5);
   font-size: 0.85rem;
 }
+
 @media screen and (min-width: 992px) {
   .section-center {
     display: grid;
@@ -245,11 +247,11 @@ Countdown Timer
 
 .info ul {
   margin: 2rem;
-  font-size: large;
+  font-size: 1.25rem;
 }
 
 .deadline-wrapper {
-  display: flex;
+  display: block;
   float: right;
   padding: 1rem;
   border-radius: 2%;
@@ -272,10 +274,6 @@ Countdown Timer
   text-align: center;
 }
 
-.deadline-format .secs {
-  margin-right: 0;
-}
-
 .deadline-format span {
   display: block;
   text-transform: uppercase;
@@ -289,6 +287,15 @@ Countdown Timer
 }
 
 @media screen and (max-width: 600px) {
+  .title {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+  .deadline-wrapper{
+    float: none;
+    display: inline-block;
+    padding: 0 auto;
+  }
   .deadline-format {
     width: 3rem;
     height: 3rem;
@@ -306,9 +313,11 @@ Countdown Timer
   }
 }
 
-.giveaway {
+
+.underline {
   border-bottom: 0.4rem solid darkslategray;
-  padding-bottom: 0.5rem;
+  height: 0.2rem;
+  width: 45%;
 }
 
 .countdown-container {
