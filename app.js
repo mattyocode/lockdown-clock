@@ -192,18 +192,18 @@ function setCountdown(countdownId, futureDate){
 let stepOneDate = new Date(2021,2,8,0,0,1);
 setCountdown("step-one", stepOneDate);
 
-// set second clock
-let stepTwoDate = new Date(2021,2,29,0,0,1);
-setCountdown("step-two", stepTwoDate);
+// // set second clock
+// let stepTwoDate = new Date(2021,2,29,0,0,1);
+// setCountdown("step-two", stepTwoDate);
 
-// set third clock
-let stepThreeDate = new Date(2021,3,12,0,0,1);
-setCountdown("step-three", stepThreeDate);
+// // set third clock
+// let stepThreeDate = new Date(2021,3,12,0,0,1);
+// setCountdown("step-three", stepThreeDate);
 
-// set fourth clock
-let stepFourDate = new Date(2021,4,17,0,0,1);
-setCountdown("step-four", stepFourDate);
+// // set fourth clock
+// let stepFourDate = new Date(2021,4,17,0,0,1);
+// setCountdown("step-four", stepFourDate);
 
-// set final clock
-let finalDate = new Date(2021,5,21,0,0,1);
-setCountdown("final-step", finalDate);
+// // set final clock
+// let finalDate = new Date(2021,5,21,0,0,1);
+// setCountdown("final-step", finalDate);
