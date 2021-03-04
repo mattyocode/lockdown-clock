@@ -188,7 +188,7 @@ p {
   left:50%;
   transform: translate(-50%, -50%);
 
-  width: 50vw;
+  width: 70vw;
   display: grid;
   margin: 2rem auto;
   max-width: 800px;
@@ -215,7 +215,7 @@ header {
   display: block;
   justify-content: center;
   z-index: 10;
-  background:rgba(0, 0, 0, 0.6);
+  background:rgba(0, 0, 0, 0.8);
   color: white;
 }
 
@@ -262,26 +262,26 @@ Carousel
   position: relative;
 }
 
-#parkbench-img {
+#step-one-img {
   background-image: radial-gradient(
     rgba(0, 0, 0, 0.2),
     rgba(0, 0, 0, 0.2)
-    ), url("./imgs/parkbench.jpg");
+    ), url("./imgs/two-walkers.jpg");
 }
 
-#six-or-more-img {
+#step-two-img {
   background-image: url("./imgs/six-or-more.jpg");
 }
 
-#gym-img {
-  background-image: url("./imgs/gym.jpg");
+#step-three-img {
+  background-image: url("./imgs/boxing.jpg");
 }
 
-#indoor-bar-img {
+#step-four-img {
   background-image: url("./imgs/indoor-bar.jpg");
 }
 
-#festival-img {
+#step-five-img {
   background-image: url("./imgs/festival.jpg");
 }
 
@@ -446,8 +446,8 @@ Countdown Timer
   }
 
   ul li{
-    font-size: 0.9rem;
-    line-height: 1.4rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .typing {
@@ -457,14 +457,15 @@ Countdown Timer
   }
 
   .deadline-format {
-    width: 3rem;
-    height: 3rem;
+    width: 4rem;
+    height: 4rem;
+    margin: 0.1rem;
   }
   .deadline-format span {
     font-size: 0.5rem;
   }
   .deadline h4:not(.expired) {
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin-bottom: 0;
   }
   .text-info {
@@ -475,7 +476,8 @@ Countdown Timer
 
 
 .underline {
-  border-bottom: 0.4rem solid darkslategray;
-  height: 0.2rem;
+  border-bottom: 0.4rem solid #56dbcc;
+  height: 0.1rem;
   width: 45%;
+  margin: 1rem;
 }
