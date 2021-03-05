@@ -68,38 +68,6 @@ function responsiveCarousel(){
 
 responsiveCarousel();
 
-function typingEffect(){
-  const texts = ['end of lockdown', 'hugging your fam', "you're not on mute", 'the indoors pub', 'seeing your pals', 'proper holidays', 'the gym'];
-  let count = 0;
-  let charIndex = 0;
-  let currentText = '';
-  let letter = '';
-
-  (function type(){
-
-    if(count === texts.length){
-      count = 0;
-    }
-    currentText = texts[count];
-    letter = currentText.slice(0, ++charIndex);
-
-    document.querySelector('.typing').textContent = letter;
-    if(letter.length === currentText.length){
-      count++;
-      charIndex = 0;
-    }
-
-
-
-    let interval = Math.floor(Math.random() * 200) + 100
-
-    setTimeout(type, interval);
-
-  }());
-
-}
-
-
 function setCountdown(countdownId, futureDate){
   const months = [
     "January",
@@ -177,7 +145,7 @@ function setCountdown(countdownId, futureDate){
     })
     if(t<0){
       clearInterval(countdown);
-      deadline.innerHTML = `<h4 class="expired">milestone passed!</h4>`
+      deadline.innerHTML = `<h4 class="expired">Milestone passed!</h4>`
     }
   };
 
@@ -186,24 +154,120 @@ function setCountdown(countdownId, futureDate){
   getRemainingTime();
 };
 
-typingEffect();
+function setTempInfo(countdownId, futureDate){
+
+  window.addEventListener('load', () => {
+
+    const averageUKTemps = 
+      [7.5,
+      7.7,
+      10.5,
+      13.2,
+      16.7,
+      19.6,
+      22,
+      21.8,
+      18.9,
+      14.8,
+      10.7,
+      7.9]; 
+
+    const countdownSection = document.getElementById(`${countdownId}`);
+
+    let long;
+    let lat;
+    let temperatureDescription = countdownSection.querySelector(".temp-info");
+    // let temperatureDegree = countdownSection.querySelector(".temp-degree");
+
+    let temp = averageUKTemps[futureDate.getMonth()];
+            
+    // set DOM elements 
+    temperatureDescription.textContent = `Avg. high temp: ${temp} ºC`;
+
+    }
+  );
+};
+
+function setSunsetInfo(countdownId, futureDate){
+
+  window.addEventListener('load', () => {
+
+    const countdownSection = document.getElementById(`${countdownId}`);
+    let sunsetInfo = countdownSection.querySelector('.sunset-info');
+
+    let long;
+    let lat;
+    let month = (futureDate.getMonth() + 1);
+    let date = futureDate.getDate();
+
+    let monthString = month < 10 ? `0${month}` : `${month}`;
+    let dayString = date < 10 ? `0${date}` : `${date}`;
+
+    let dateString = futureDate.getFullYear() + '-' + monthString + '-' + dayString;
+    
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(position => {
+        long = position.coords.longitude;
+        lat = position.coords.latitude;
+
+        const api = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}&date=${dateString}`;
+
+        fetch(api)
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">Sunset at ${data.results.sunset.slice(0,4)} PM <br><span class="small-copy">(based on your location)</span></a>`;
+
+        })
+
+      });
+    } else {
+
+      const api = `https://api.sunrise-sunset.org/json?lat=52.3963&lng=0.7302&date=${dateString}`;
+
+      fetch(api)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">Sunset at ${data.results.sunset.slice(0,4)} PM (avg.)</a>`;
+
+      })
+       
+    }
+
+  });
+
+};
 
 // set first clock
 let stepOneDate = new Date(2021,2,8,0,0,1);
 setCountdown("step-one", stepOneDate);
+setTempInfo("step-one", stepOneDate);
+setSunsetInfo("step-one", stepOneDate);
 
 // set second clock
 let stepTwoDate = new Date(2021,2,29,0,0,1);
 setCountdown("step-two", stepTwoDate);
+setTempInfo("step-two", stepTwoDate);
+setSunsetInfo("step-two", stepTwoDate);
 
 // set third clock
 let stepThreeDate = new Date(2021,3,12,0,0,1);
 setCountdown("step-three", stepThreeDate);
+setTempInfo("step-three", stepThreeDate);
+setSunsetInfo("step-three", stepThreeDate);
 
 // set fourth clock
 let stepFourDate = new Date(2021,4,17,0,0,1);
 setCountdown("step-four", stepFourDate);
+setTempInfo("step-four", stepFourDate);
+setSunsetInfo("step-four", stepFourDate);
 
 // set final clock
 let finalDate = new Date(2021,5,21,0,0,1);
 setCountdown("final-step", finalDate);
+setTempInfo("final-step", finalDate);
+setSunsetInfo("final-step", finalDate);
+

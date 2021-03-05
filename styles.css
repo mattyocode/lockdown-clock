@@ -91,7 +91,11 @@ ul {
   font-weight: bolder;
 }
 a {
+  color: white;
   text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
 }
 img:not(.logo) {
   width: 100%;
@@ -211,7 +215,7 @@ header {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 14%;
+  height: 20%;
   display: block;
   justify-content: center;
   z-index: 10;
@@ -222,8 +226,8 @@ header {
 .title {
   font-family:'PT Serif';
   font-weight: 900;
-  font-size: 2rem;
-  line-height: 1rem;
+  font-size: 3rem;
+  line-height: 4rem;
 }
 
 .header-text {
@@ -231,6 +235,10 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.typing {
+  line-height: 4rem;
 }
 
 /*
@@ -257,16 +265,18 @@ Carousel
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-  /* filter: brightness(60%); */
   position: relative;
 }
 
-#step-one-img {
+/* #step-one-img {
   background-image: radial-gradient(
     rgba(0, 0, 0, 0.2),
     rgba(0, 0, 0, 0.2)
     ), url("./imgs/two-walkers.jpg");
+} */
+
+#step-one-img {
+  background-image: url("./imgs/two-walkers.jpg");
 }
 
 #step-two-img {
@@ -342,6 +352,39 @@ Carousel text
 
 }
 
+.live-data-container {
+  width: 90%;
+  white-space: nowrap;
+  display: flex;
+  float: right;
+}
+
+.temp,
+.sunset {
+  display: flex;
+  width: 50%;
+}
+
+.sunset p,
+.temp p {
+  color: white;
+  flex: 1;
+  font-size: 1rem;
+  font-weight: bold;
+  overflow-wrap: break-word;
+}
+
+.thermometer-icon,
+.sunset-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  float: right;
+}
+
+.small-copy {
+  font-size: 0.75rem;
+}
+
 /*
 =============== 
 Countdown Timer
@@ -353,24 +396,18 @@ Countdown Timer
 }
 
 .info ul {
-  margin: 2rem;
+  margin: 3rem 2rem;
   font-size: 1.25rem;
 }
 
-/* .deadline-wrapper {
-  padding: 1rem;
-  border-radius: 2%;
-  margin-bottom: 1.5rem;
-} */
-
 .deadline {
   padding: 1rem;
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
   display: flex;
   justify-content: center;
 }
 .deadline-format {
-  background: var(--clr-grey-5);
+  background: var(--clr-black);
   color: var(--clr-white);
   margin: 0 0.5rem;
   border-radius: 5%;
@@ -393,10 +430,6 @@ Countdown Timer
   letter-spacing: var(--spacing);
 }
 
-.typing {
-  line-height: 2rem;
-}
-
 .countdown-container {
   padding: 3rem;
   margin: 1rem;
@@ -407,19 +440,20 @@ Countdown Timer
   z-index: 50;
   background: linear-gradient(
     to right bottom,
-    rgba(53, 53, 53, 0.2),
-    rgba(80, 80, 80, 0.1)
+    rgba(53, 53, 53, 0.6),
+    rgba(80, 80, 80, 0.6)
   );
-  backdrop-filter: blur(0.25rem);
+  backdrop-filter: blur(0.4rem);
 }
 
 @media screen and (max-width: 800px) {
   header {
     height: 23%;
+    max-height: 20vh;
   }
   .title {
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 2rem;
+    line-height: 3rem;
     padding-bottom: 0;
     margin: 0;
   }
@@ -445,9 +479,14 @@ Countdown Timer
   z-index: 10;
   }
 
+  ul {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   ul li{
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
   }
 
   .typing {
@@ -472,8 +511,38 @@ Countdown Timer
     margin-left: 3%;
     padding-bottom: 1rem;
   }
+  .live-data-container{
+    width: 95%;
+  }
+  .sunset p,
+  .temp p {
+  color: white;
+  flex: 1;
+  font-size: x-small;
+  margin: auto;
+  overflow-wrap: break-word;
+  }
+  .small-copy {
+    font-size: xx-small;
+  }
+  .thermometer-icon,
+  .sunset-icon {
+  height: 1.2rem;
+  width: 1.2rem;
+  float: right;
+  margin: auto;
+}
 }
 
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+  }
+  .live-data-container{
+    width: 100%;
+  }
+}
 
 .underline {
   border-bottom: 0.4rem solid #56dbcc;
