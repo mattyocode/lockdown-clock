@@ -205,12 +205,30 @@ function setSunsetInfo(countdownId, futureDate){
 
     let dateString = futureDate.getFullYear() + '-' + monthString + '-' + dayString;
     
-    if(navigator.geolocation){
+    const geoOptions = {timeout: 4000};
+
+    function geoError(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+      let api = `https://api.sunrise-sunset.org/json?lat=52.3963&lng=-0.7302&date=${dateString}`;
+
+      fetch(api)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">Sunset at ${data.results.sunset.slice(0,4)} PM (avg.)</a>`;
+
+      });
+    };
+
+    if(navigator.geolocation) {
+
       navigator.geolocation.getCurrentPosition(position => {
+
         long = position.coords.longitude;
         lat = position.coords.latitude;
 
-        const api = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}&date=${dateString}`;
+        let api = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}&date=${dateString}`;
 
         fetch(api)
         .then(response => {
@@ -221,23 +239,11 @@ function setSunsetInfo(countdownId, futureDate){
 
         })
 
-      });
-    } else {
+      }, geoError, geoOptions);
 
-      const api = `https://api.sunrise-sunset.org/json?lat=52.3963&lng=0.7302&date=${dateString}`;
+  };
 
-      fetch(api)
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">Sunset at ${data.results.sunset.slice(0,4)} PM (avg.)</a>`;
-
-      })
-       
-    }
-
-  });
+});
 
 };
 
@@ -270,4 +276,3 @@ let finalDate = new Date(2021,5,21,0,0,1);
 setCountdown("final-step", finalDate);
 setTempInfo("final-step", finalDate);
 setSunsetInfo("final-step", finalDate);
-
