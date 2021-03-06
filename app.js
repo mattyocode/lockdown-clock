@@ -19,9 +19,62 @@ function responsiveCarousel(){
       carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
   });
 
-
-
   carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
+
+  // Checking for swipes on mobile
+
+  carouselSlide.addEventListener("touchstart", startTouch);
+  carouselSlide.addEventListener("touchmove", moveTouch);
+
+  // Swipe Up / Down / Left / Right
+  var initialX = null;
+  var initialY = null;
+
+  function startTouch(e) {
+    initialX = e.touches[0].clientX;
+    initialY = e.touches[0].clientY;
+  };
+
+  function moveTouch(e) {
+    if (initialX === null) {
+      return;
+    }
+
+    if (initialY === null) {
+      return;
+    }
+
+    var currentX = e.touches[0].clientX;
+    var currentY = e.touches[0].clientY;
+
+    var diffX = initialX - currentX;
+    var diffY = initialY - currentY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      // sliding horizontally
+      if (diffX > 0) {
+        // swiped left
+        nextSlide();
+      } else {
+        // swiped right
+        prevSlide();
+      } 
+    } else {
+      // sliding vertically
+      if (diffY > 0) {
+        // swiped up
+        console.log("swiped up");
+      } else {
+        // swiped down
+        console.log("swiped down");
+      }  
+    }
+
+    initialX = null;
+    initialY = null;
+
+    e.preventDefault();
+  };
 
   // Button listeners
 
@@ -40,22 +93,26 @@ function responsiveCarousel(){
           nextBtn.classList.remove('hide');
           prevBtn.classList.remove('hide');
       };
-  };        
+  };
+
+  function nextSlide() {
+    if(counter >= carouselContent.length - 1) return;
+    carouselSlide.style.transition = 'transform 0.4s ease-in-out';
+    counter++;
+    carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
+  };
+
+  function prevSlide() {
+    if(counter <= 0) return;
+    carouselSlide.style.transition = 'transform 0.4s ease-in-out';
+    counter--;
+    carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
+  };
 
 
-  nextBtn.addEventListener('click', () => {
-      if(counter >= carouselContent.length - 1) return;
-      carouselSlide.style.transition = 'transform 0.4s ease-in-out';
-      counter++;
-      carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
-  });
+  nextBtn.addEventListener('click', nextSlide);
 
-  prevBtn.addEventListener('click', () => {
-      if(counter <= 0) return;
-      carouselSlide.style.transition = 'transform 0.4s ease-in-out';
-      counter--;
-      carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
-  });
+  prevBtn.addEventListener('click', prevSlide);
 
   window.addEventListener('DOMContentLoaded', () => {
       checkBtnDisplay();
@@ -65,8 +122,6 @@ function responsiveCarousel(){
       checkBtnDisplay();
   });
 };
-
-responsiveCarousel();
 
 function setCountdown(countdownId, futureDate){
   const months = [
@@ -182,7 +237,7 @@ function setTempInfo(countdownId, futureDate){
     let temp = averageUKTemps[futureDate.getMonth()];
             
     // set DOM elements 
-    temperatureDescription.textContent = `Avg. high temp: ${temp} ºC`;
+    temperatureDescription.textContent = `Avg. high ${temp} ºC`;
 
     }
   );
@@ -205,7 +260,7 @@ function setSunsetInfo(countdownId, futureDate){
 
     let dateString = futureDate.getFullYear() + '-' + monthString + '-' + dayString;
     
-    const geoOptions = {timeout: 4000};
+    const geoOptions = {timeout: 6000};
 
     function geoError(err) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -216,7 +271,7 @@ function setSunsetInfo(countdownId, futureDate){
         return response.json();
       })
       .then(data => {
-        sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">Sunset at ${data.results.sunset.slice(0,4)} PM (avg.)</a>`;
+        sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">Avg. ${data.results.sunset.slice(0,4)} PM</a>`;
 
       });
     };
@@ -228,14 +283,14 @@ function setSunsetInfo(countdownId, futureDate){
         long = position.coords.longitude;
         lat = position.coords.latitude;
 
-        let api = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}&date=${dateString}`;
+        const api = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}&date=${dateString}`;
 
         fetch(api)
         .then(response => {
           return response.json();
         })
         .then(data => {
-          sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">Sunset at ${data.results.sunset.slice(0,4)} PM <br><span class="small-copy">(based on your location)</span></a>`;
+          sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">${data.results.sunset.slice(0,4)} PM <br><span class="small-copy">(based on your location)</span></a>`;
 
         })
 
@@ -246,6 +301,8 @@ function setSunsetInfo(countdownId, futureDate){
 });
 
 };
+
+responsiveCarousel();
 
 // set first clock
 let stepOneDate = new Date(2021,2,8,0,0,1);

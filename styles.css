@@ -249,7 +249,6 @@ Carousel
 
 .carousel-container {
   height: 100vh;
-  /* width: 100%; */
 }
 
 .carousel-slide {
@@ -257,7 +256,6 @@ Carousel
   display: flex;
   height: 100vh;
   width: 500%;
-  /* justify-content: center; */
 }
 
 .full-bleed {
@@ -267,13 +265,6 @@ Carousel
   background-size: cover;
   position: relative;
 }
-
-/* #step-one-img {
-  background-image: radial-gradient(
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2)
-    ), url("./imgs/two-walkers.jpg");
-} */
 
 #step-one-img {
   background-image: url("./imgs/two-walkers.jpg");
@@ -336,8 +327,8 @@ Carousel text
 }
 
 .text-info {
-  margin-left: 0;
-  padding-bottom: 3rem;
+  margin: 0;
+  /* padding-bottom: 3rem; */
 }
 
 .info h3 {
@@ -356,13 +347,27 @@ Carousel text
   width: 90%;
   white-space: nowrap;
   display: flex;
-  float: right;
+  justify-content: center;
+  margin: auto;
+  padding-bottom: 1rem;
+}
+
+.temp-info,
+.sunset-info {
+  margin: auto;
 }
 
 .temp,
 .sunset {
   display: flex;
-  width: 50%;
+  width: 40%;
+  max-width: 25vw;
+  
+}
+
+.temp img,
+.sunset img {
+  width: 6rem;
 }
 
 .sunset p,
@@ -372,17 +377,24 @@ Carousel text
   font-size: 1rem;
   font-weight: bold;
   overflow-wrap: break-word;
+  text-align: right;
+
 }
 
 .thermometer-icon,
 .sunset-icon {
   height: 1.5rem;
-  width: 1.5rem;
-  float: right;
+  margin: auto;
+  text-align: right;
+}
+
+.thermometer-icon {
+  padding-right: 1rem;
 }
 
 .small-copy {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
+  margin: 0;
 }
 
 /*
@@ -402,7 +414,7 @@ Countdown Timer
 
 .deadline {
   padding: 1rem;
-  margin: 1.5rem 0;
+  margin: 1rem 0 0 0;
   display: flex;
   justify-content: center;
 }
@@ -439,17 +451,17 @@ Countdown Timer
   top: 10%;
   z-index: 50;
   background: linear-gradient(
-    to right bottom,
+    to left bottom,
     rgba(53, 53, 53, 0.6),
-    rgba(80, 80, 80, 0.6)
+    rgba(80, 80, 80, 0.8)
   );
   backdrop-filter: blur(0.4rem);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   header {
-    height: 23%;
-    max-height: 20vh;
+    height: 17%;
+    max-height: 17vh;
   }
   .title {
     font-size: 2rem;
@@ -461,15 +473,20 @@ Countdown Timer
     display: flex;
     justify-content: center;
     align-items: center;
-
     display: grid;
     grid-template-columns: 1fr;
     place-items: center;
     width: 80%;
+    padding-bottom: 5rem;
   }
   .countdown-container {
     padding: .5rem;
     max-width: 90%;
+    margin-bottom: 20%;
+  }
+  .underline {
+    margin: 0;
+    padding: 0;
   }
   #prev,
   #next {
@@ -479,9 +496,15 @@ Countdown Timer
   z-index: 10;
   }
 
-  ul {
-    margin-top: 0;
-    margin-bottom: 0;
+  .text-info ul {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 0;
+  }
+
+  .text-info ul {
+    margin-left: 2rem;
+    margin-right: 1rem;
   }
 
   ul li{
@@ -489,10 +512,8 @@ Countdown Timer
     line-height: 1.25rem;
   }
 
-  .typing {
-    margin: 0;
-    margin-top: 0.25rem;
-    padding-top: 0;
+  .deadline {
+    margin-top: 0;
   }
 
   .deadline-format {
@@ -508,12 +529,17 @@ Countdown Timer
     margin-bottom: 0;
   }
   .text-info {
-    margin-left: 3%;
     padding-bottom: 1rem;
   }
   .live-data-container{
     width: 95%;
+
   }
+  .sunset,
+  .temp {
+    width: 100%
+  }
+
   .sunset p,
   .temp p {
   color: white;
@@ -531,16 +557,36 @@ Countdown Timer
   width: 1.2rem;
   float: right;
   margin: auto;
-}
+  }
+  .sunset-icon {
+  padding-left: 0;
+  }
+  .thermometer-icon {
+    padding-right: 0.4em;
+  }
+  .sunset-info {
+    padding-left: 0.4rem;
+  }
+  .temp img,
+  .sunset img {
+  width: 4rem;
+  }
+  .bottom-space {
+    min-height: 2%;
+  }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .title {
     font-size: 1.5rem;
     line-height: 1.75rem;
   }
   .live-data-container{
     width: 100%;
+  }
+  .temp,
+  .sunset {
+    max-width: 35vw;
   }
 }
 
