@@ -13,9 +13,6 @@ function responsiveCarousel(){
 
   window.addEventListener('resize', () => {
       width = carouselContent[counter].clientWidth;
-      // carouselContent.forEach((item)=>{
-      //     item.style.width = width;
-      // })
       carouselSlide.style.transform = 'translateX(' + (-width * counter) + 'px)';
   });
 
@@ -59,16 +56,17 @@ function responsiveCarousel(){
         // swiped right
         prevSlide();
       } 
-    } else {
-      // sliding vertically
-      if (diffY > 0) {
-        // swiped up
-        console.log("swiped up");
-      } else {
-        // swiped down
-        console.log("swiped down");
-      }  
-    }
+    } 
+    // else {
+    //   // sliding vertically
+    //   if (diffY > 0) {
+    //     // swiped up
+    //     console.log("swiped up");
+    //   } else {
+    //     // swiped down
+    //     console.log("swiped down");
+    //   }  
+    // }
 
     initialX = null;
     initialY = null;
@@ -121,6 +119,29 @@ function responsiveCarousel(){
   carouselSlide.addEventListener('transitionend', () => {
       checkBtnDisplay();
   });
+
+  /// Vertically centering countdown countainer
+
+  // const countdownContainer = document.querySelectorAll('.countdown-container');
+  // const header = document.querySelector('.header');
+  // const fullHeight = window.innerHeight;
+  // const sectionCenterHeight = document.querySelector('.section-center').offsetHeight;
+  // const headerHeight = header.offsetHeight;
+
+  // countdownContainer.forEach((container) => {
+
+  //   let containerHeight = container.offsetHeight;
+    // let top = Math.ceil((fullHeight - (containerHeight + headerHeight)) / 2);
+    // let top = Math.floor((sectionCenterHeight - containerHeight) / 2);
+    // document.getElementById(container.id).setAttribute("style", `top:${top}px`);
+    // console.log(sectionCenterHeight);
+    // console.log(`${container.id}`);
+    // console.log(`top: ${top}`);
+    // console.log(`full height: ${fullHeight}`);
+    // console.log(`container height: ${containerHeight}`);
+    // console.log(`header: ${headerHeight}`);
+//   });
+
 };
 
 function setCountdown(countdownId, futureDate){
@@ -237,7 +258,7 @@ function setTempInfo(countdownId, futureDate){
     let temp = averageUKTemps[futureDate.getMonth()];
             
     // set DOM elements 
-    temperatureDescription.textContent = `Avg. high ${temp} ºC`;
+    temperatureDescription.innerHTML = `${temp} ºC<br><span class="small-copy">Avg. high<span>`;
 
     }
   );
@@ -260,7 +281,7 @@ function setSunsetInfo(countdownId, futureDate){
 
     let dateString = futureDate.getFullYear() + '-' + monthString + '-' + dayString;
     
-    const geoOptions = {timeout: 6000};
+    const geoOptions = {timeout: 8000};
 
     function geoError(err) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -290,7 +311,7 @@ function setSunsetInfo(countdownId, futureDate){
           return response.json();
         })
         .then(data => {
-          sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">${data.results.sunset.slice(0,4)} PM <br><span class="small-copy">(based on your location)</span></a>`;
+          sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">${data.results.sunset.slice(0,4)} PM <br><span class="small-copy">(based on location)</span></a>`;
 
         })
 
