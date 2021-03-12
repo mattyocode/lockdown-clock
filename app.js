@@ -120,28 +120,6 @@ function responsiveCarousel(){
       checkBtnDisplay();
   });
 
-  /// Vertically centering countdown countainer
-
-  // const countdownContainer = document.querySelectorAll('.countdown-container');
-  // const header = document.querySelector('.header');
-  // const fullHeight = window.innerHeight;
-  // const sectionCenterHeight = document.querySelector('.section-center').offsetHeight;
-  // const headerHeight = header.offsetHeight;
-
-  // countdownContainer.forEach((container) => {
-
-  //   let containerHeight = container.offsetHeight;
-    // let top = Math.ceil((fullHeight - (containerHeight + headerHeight)) / 2);
-    // let top = Math.floor((sectionCenterHeight - containerHeight) / 2);
-    // document.getElementById(container.id).setAttribute("style", `top:${top}px`);
-    // console.log(sectionCenterHeight);
-    // console.log(`${container.id}`);
-    // console.log(`top: ${top}`);
-    // console.log(`full height: ${fullHeight}`);
-    // console.log(`container height: ${containerHeight}`);
-    // console.log(`header: ${headerHeight}`);
-//   });
-
 };
 
 function setCountdown(countdownId, futureDate){
@@ -253,7 +231,6 @@ function setTempInfo(countdownId, futureDate){
     let long;
     let lat;
     let temperatureDescription = countdownSection.querySelector(".temp-info");
-    // let temperatureDegree = countdownSection.querySelector(".temp-degree");
 
     let temp = averageUKTemps[futureDate.getMonth()];
             
