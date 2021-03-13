@@ -288,7 +288,7 @@ function setSunsetInfo(countdownId, futureDate){
           return response.json();
         })
         .then(data => {
-          sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">${data.results.sunset.slice(0,4)} PM <br><span class="small-copy">(based on location)</span></a>`;
+          sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">${data.results.sunset.slice(0,4)} PM <br><span class="small-copy">(location based)</span></a>`;
 
         })
 

@@ -336,7 +336,6 @@ Carousel text
 
 .text-info {
   margin: 2% 0 0 2%;
-  /* padding-bottom: 3rem; */
 }
 
 .info h3 {
@@ -352,35 +351,25 @@ Carousel text
 }
 
 .live-data-container {
-  width: 90%;
+  width: 70%;
   white-space: nowrap;
   display: flex;
   justify-content: center;
   margin: auto;
-  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 
 .temp-info,
 .sunset-info {
-  margin: auto;
+  margin: auto 0;
   line-height: 1rem;
-}
-
-.sunset-info br {
-
 }
 
 .temp,
 .sunset {
   display: flex;
-  width: 40%;
-  max-width: 25vw;
-  
-}
-
-.temp img,
-.sunset img {
-  width: 6rem;
+  max-width: 20vw;
+  /* margin: 0 1rem; */
 }
 
 .sunset p,
@@ -391,19 +380,17 @@ Carousel text
   font-weight: bold;
   overflow-wrap: break-word;
   text-align: right;
-
 }
 
 .thermometer-icon,
 .sunset-icon {
   height: 1.5rem;
+  max-width: 6rem;
   margin: auto;
-  /* text-align: left; */
+  text-align: left;
+  padding: 0 15%;
 }
 
-.thermometer-icon {
-  padding-right: 1rem;
-}
 
 .small-copy {
   font-size: 0.65rem;
@@ -529,14 +516,13 @@ Countdown Timer
   .text-info {
     padding-bottom: 1rem;
   }
-  .live-data-container{
+  /* .live-data-container{
     width: 95%;
-
-  }
+  } */
   .sunset,
   .temp {
-    width: 100%;
-    padding: 0 4%;
+    width: 80%;
+    padding: 0;
   }
 
   .sunset p,
@@ -551,16 +537,17 @@ Countdown Timer
   .thermometer-icon,
   .sunset-icon {
   height: 1.2rem;
-  width: 1.2rem;
-  float: right;
+  /* width: 1.2rem; */
+  /* float: right;
   margin: auto;
+  padding-left: 8%; */
   }
-  .sunset-icon {
+  /* .sunset-icon {
   padding-left: 0;
   }
   .thermometer-icon {
     padding-left: 8%;
-  }
+  } */
   .temp-info,
   .sunset-info {
     padding-left: 0.4rem;
