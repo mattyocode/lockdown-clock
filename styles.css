@@ -369,7 +369,10 @@ Carousel text
 .sunset {
   display: flex;
   width: 16vw;
-  max-width: 10rem;
+  max-width: 12rem;
+  padding: 3px;
+  /* border: #eee 1px solid;
+  border-radius: 3px; */
 }
 
 .sunset p,
@@ -387,7 +390,7 @@ Carousel text
   height: 1.5rem;
   max-width: 5rem;
   min-width: 4rem;
-  /* margin: auto; */
+  margin: auto 0;
   text-align: left;
 }
 
@@ -543,6 +546,10 @@ Countdown Timer
     padding-left: 0.4rem;
     line-height: 0.7rem;
   }
+  .sunset-icon,
+  .temp-icon {
+    padding: 0 2%;
+  }
   .bottom-space {
     min-height: 2%;
   }
@@ -597,6 +604,5 @@ Countdown Timer
   }
   .countdown-container {
     width: 95%;
-    /* top: 10%; */
   }
 }
