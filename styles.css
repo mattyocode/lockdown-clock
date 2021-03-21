@@ -189,7 +189,7 @@ p {
   transform: translate(-50%, -50%);
   padding-top: 12%;
 
-  width: 70vw;
+  max-width: 70%;
   display: grid;
   margin: 0 auto;
   max-width: 800px;
@@ -369,7 +369,7 @@ Carousel text
 .sunset {
   display: flex;
   width: 16vw;
-  max-width: 40%;
+  max-width: 10rem;
 }
 
 .sunset p,
@@ -386,6 +386,7 @@ Carousel text
 .sunset-icon {
   height: 1.5rem;
   max-width: 5rem;
+  min-width: 4rem;
   /* margin: auto; */
   text-align: left;
 }
@@ -394,6 +395,13 @@ Carousel text
 .small-copy {
   font-size: 0.65rem;
   margin: 0;
+}
+
+.underline {
+  border-bottom: 0.4rem solid #56dbcc;
+  height: 0.1rem;
+  width: 45%;
+  margin: 1rem;
 }
 
 
@@ -443,30 +451,26 @@ Countdown Timer
 }
 
 
-@media screen and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   header {
     max-height: 10vh;
   }
   .title {
-    font-size: 1.25rem;
-    line-height: 1.25rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
     padding-bottom: 0;
     margin: 0;
   }
 
-  .section-center {
+  /* .section-center {
     justify-content: center;
     align-items: center;
     display: grid;
     grid-template-columns: 1fr;
     place-items: center;
-    width: 90%;
-    /* padding-top: 3rem; */
-  }
+  } */
   .countdown-container {
     padding: .5rem;
-    max-width: 90%;
-    /* margin-bottom: 20%; */
   }
   .underline {
     margin: 0;
@@ -518,20 +522,17 @@ Countdown Timer
   .live-data-container{
     padding-top: 0;
   }
-  /* .thermometer-icon,
-  .sunset-icon {
-  height: 1rem;
-  margin: auto 2rem;
-  text-align: left;
-} */
-
+  .sunset,
+  .temp {
+    max-width: 14rem;
+  }
   .sunset p,
   .temp p {
-  color: white;
-  flex: 1;
-  font-size: small;
-  margin: auto;
-  overflow-wrap: break-word;
+    color: white;
+    flex: 1;
+    font-size: small;
+    margin: auto;
+    overflow-wrap: break-word;
   }
   .small-copy {
     font-size: 0.5rem;
@@ -547,17 +548,16 @@ Countdown Timer
   }
 }
 
-@media screen and (max-width: 800px) {
-  .countdown-container {
-    width:90%
-  }
-  .title {
-    font-size: 1rem;
-    line-height: 1rem;
-  }
+@media only screen and (max-width: 800px) {
   .live-data-container{
     width: 100%;
   }
+  .info ul {
+    font-size: 1rem;
+    line-height: 2rem;
+    margin: 1.5rem 1rem;
+  
+  }  
   .temp,
   .sunset {
     font-size: x-small;
@@ -569,9 +569,7 @@ Countdown Timer
 }
 
 @media screen and (max-width: 600px) {
-  .countdown-container {
-    width:95%
-  }
+
   .temp,
   .sunset {
     font-size: x-small;
@@ -579,9 +577,26 @@ Countdown Timer
   }
 }
 
-.underline {
-  border-bottom: 0.4rem solid #56dbcc;
-  height: 0.1rem;
-  width: 45%;
-  margin: 1rem;
+@media only screen and (max-width: 800px) and (orientation: portrait) {
+  .section-center {
+    width: 95%;
+  }
+  .countdown-container {
+    width: 90%;
+    /* top: 10%; */
+  }
+  .title {
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 600px) and (orientation: portrait) {
+  .section-center {
+    width: 95%;
+  }
+  .countdown-container {
+    width: 95%;
+    /* top: 10%; */
+  }
 }
