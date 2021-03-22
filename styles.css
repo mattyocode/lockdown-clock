@@ -354,6 +354,7 @@ Carousel text
   width: 100%;
   white-space: nowrap;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin: auto;
   padding-top: 1rem;
@@ -361,6 +362,7 @@ Carousel text
 
 .temp-info,
 .sunset-info {
+  flex: 1;
   margin: auto 0;
   line-height: 1rem;
 }
@@ -371,14 +373,11 @@ Carousel text
   width: 16vw;
   max-width: 12rem;
   padding: 3px;
-  /* border: #eee 1px solid;
-  border-radius: 3px; */
 }
 
 .sunset p,
 .temp p {
   color: white;
-  flex: 1;
   font-size: 1rem;
   font-weight: bold;
   overflow-wrap: break-word;
@@ -387,11 +386,10 @@ Carousel text
 
 .thermometer-icon,
 .sunset-icon {
+  flex: 1;
   height: 1.5rem;
-  max-width: 5rem;
-  min-width: 4rem;
+  border-radius: 2px;
   margin: auto 0;
-  text-align: left;
 }
 
 
@@ -556,15 +554,15 @@ Countdown Timer
 }
 
 @media only screen and (max-width: 800px) {
-  .live-data-container{
+  /* .live-data-container{
     width: 100%;
-  }
+  } */
   .info ul {
     font-size: 1rem;
     line-height: 2rem;
     margin: 1.5rem 1rem;
   
-  }  
+  } 
   .temp,
   .sunset {
     font-size: x-small;
@@ -590,6 +588,7 @@ Countdown Timer
   }
   .countdown-container {
     width: 90%;
+    padding: 1%;
     /* top: 10%; */
   }
   .title {

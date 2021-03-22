@@ -51,9 +51,11 @@ function responsiveCarousel(){
       // sliding horizontally
       if (diffX > 0) {
         // swiped left
+        e.preventDefault();
         nextSlide();
       } else {
         // swiped right
+        e.preventDefault();
         prevSlide();
       } 
     } 
@@ -71,7 +73,6 @@ function responsiveCarousel(){
     initialX = null;
     initialY = null;
 
-    e.preventDefault();
   };
 
   // Button listeners
@@ -233,10 +234,9 @@ function setTempInfo(countdownId, futureDate){
     let temperatureDescription = countdownSection.querySelector(".temp-info");
 
     let temp = averageUKTemps[futureDate.getMonth()];
-            
-    // set DOM elements 
-    temperatureDescription.innerHTML = `${temp} ºC<br><span class="small-copy">Avg. high<span>`;
-
+    
+    // set DOM elements
+    temperatureDescription.innerHTML = `${temp} ºC<br><span class="small-copy">Avg. UK high<span>`;
     }
   );
 };
@@ -289,7 +289,7 @@ function setSunsetInfo(countdownId, futureDate){
         })
         .then(data => {
           sunsetInfo.innerHTML = `<a href="https://sunrise-sunset.org/">${data.results.sunset.slice(0,4)} PM <br><span class="small-copy">(location based)</span></a>`;
-
+          console.log(data);
         })
 
       }, geoError, geoOptions);
